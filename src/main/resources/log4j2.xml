@@ -86,8 +86,11 @@
         <logger name="org.apache" level="WARN" />
         <logger name="org.quartz" level="WARN" />
         <logger name="io.lettuce" level="WARN" />
-        <logger name="com.alibaba.druid" level="WARN" />
-        <logger name="ai.bell.dubbo.admin" level="WARN" />
+        <logger name="io.netty" level="WARN" />
+        <logger name="reactor" level="WARN" />
+        <logger name="com.alibaba" level="WARN" />
+        <logger name="org.hibernate" level="WARN" />
+        <logger name="ai.bell.dubbo.server.admin" level="DEBUG" />
         <root level="all">
             <appender-ref ref="Console"/>
             <appender-ref ref="FileLog"/>

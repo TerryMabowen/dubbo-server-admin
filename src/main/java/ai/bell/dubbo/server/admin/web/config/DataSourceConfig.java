@@ -2,11 +2,9 @@ package ai.bell.dubbo.server.admin.web.config;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.alibaba.druid.support.http.StatViewServlet;
-import com.alibaba.druid.support.http.WebStatFilter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * TODO
- *
  * @author Mabowen
  * @date 2020-07-01 11:00
  */
@@ -63,18 +59,5 @@ public class DataSourceConfig {
         //url 匹配
         bean.addUrlMappings("/druid/*");
         return bean;
-    }
-
-    @Bean(name = "druidWebStatFilter")
-    public FilterRegistrationBean filterRegistrationBean() {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        filterRegistrationBean.setFilter(new WebStatFilter());
-        filterRegistrationBean.addUrlPatterns("/*");
-        //忽略资源
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
-        filterRegistrationBean.addInitParameter("profileEnable", "true");
-        filterRegistrationBean.addInitParameter("principalCookieName", "USER_COOKIE");
-        filterRegistrationBean.addInitParameter("principalSessionName", "USER_SESSION");
-        return filterRegistrationBean;
     }
 }
